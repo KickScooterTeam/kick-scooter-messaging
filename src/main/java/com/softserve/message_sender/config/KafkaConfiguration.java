@@ -1,6 +1,6 @@
 package com.softserve.message_sender.config;
 
-import com.softserve.message_sender.domain.UserReceipt;
+import com.softserve.message_sender.model.UserReceipt;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.beans.factory.annotation.Value;
@@ -26,7 +26,7 @@ public class KafkaConfiguration {
     private String groupId;
 
     @Bean
-    public ConsumerFactory<String, UserReceipt> consumerFactory() {
+    public Map<String, Object> consumerConfig(){
         Map<String, Object> config = new HashMap<>();
 
         config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
@@ -34,7 +34,12 @@ public class KafkaConfiguration {
         config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
 
-        return new DefaultKafkaConsumerFactory<>(config, new StringDeserializer(),
+        return config;
+    }
+
+    @Bean
+    public ConsumerFactory<String, UserReceipt> consumerFactory() {
+        return new DefaultKafkaConsumerFactory<>(consumerConfig(), new StringDeserializer(),
                 new JsonDeserializer<>(UserReceipt.class, false));
     }
 
@@ -45,5 +50,4 @@ public class KafkaConfiguration {
         return factory;
     }
 
-    //todo config outside factory
 }

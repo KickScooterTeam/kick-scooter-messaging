@@ -1,6 +1,6 @@
 package com.softserve.message_sender.service;
 
-import com.softserve.message_sender.domain.UserReceipt;
+import com.softserve.message_sender.model.UserReceipt;
 import com.softserve.message_sender.repository.UserReceiptRepo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;

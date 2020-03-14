@@ -1,6 +1,6 @@
 package com.softserve.message_sender.service;
 
-import com.softserve.message_sender.domain.UserReceipt;
+import com.softserve.message_sender.model.UserReceipt;
 
 public interface MailService {
 

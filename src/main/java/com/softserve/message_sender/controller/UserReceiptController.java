@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("api/user-receipt")
-public class MessageController {
+public class UserReceiptController {
 
     @Value("${paging.default-page-size}")
     private int pageSize;

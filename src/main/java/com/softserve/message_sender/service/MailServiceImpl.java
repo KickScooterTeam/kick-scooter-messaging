@@ -1,6 +1,6 @@
 package com.softserve.message_sender.service;
 
-import com.softserve.message_sender.model.UserReceipt;
+import com.softserve.message_sender.model.MessageHandler;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -17,15 +17,15 @@ public class MailServiceImpl implements MailService {
 
     private final JavaMailSender javaMailSender;
 
-    public void sendReceiptMessage(UserReceipt userReceipt) {
+    public void sendReceiptMessage(MessageHandler messageHandler) {
         MimeMessage message = javaMailSender.createMimeMessage();
 
         try {
             MimeMessageHelper helper = new MimeMessageHelper(message, true);
 
-            helper.setTo(userReceipt.getMail());
-            helper.setSubject(UserReceipt.TITLE);
-            helper.setText(userReceipt.toString());
+            helper.setTo(messageHandler.getMail());
+            helper.setSubject(MessageHandler.TITLE);
+            helper.setText(messageHandler.toString());
 
             javaMailSender.send(message);
             log.info("Mail was successfully sent");

@@ -1,6 +1,6 @@
 package com.softserve.message_sender.config;
 
-import com.softserve.message_sender.model.UserReceipt;
+import com.softserve.message_sender.model.MessageHandler;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.beans.factory.annotation.Value;
@@ -38,14 +38,14 @@ public class KafkaConfiguration {
     }
 
     @Bean
-    public ConsumerFactory<String, UserReceipt> consumerFactory() {
+    public ConsumerFactory<String, MessageHandler> consumerFactory() {
         return new DefaultKafkaConsumerFactory<>(consumerConfig(), new StringDeserializer(),
-                new JsonDeserializer<>(UserReceipt.class, false));
+                new JsonDeserializer<>(MessageHandler.class, false));
     }
 
     @Bean
-    public ConcurrentKafkaListenerContainerFactory<String, UserReceipt> kafkaListenerContainerFactory() {
-        ConcurrentKafkaListenerContainerFactory<String, UserReceipt> factory = new ConcurrentKafkaListenerContainerFactory<>();
+    public ConcurrentKafkaListenerContainerFactory<String, MessageHandler> kafkaListenerContainerFactory() {
+        ConcurrentKafkaListenerContainerFactory<String, MessageHandler> factory = new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(consumerFactory());
         return factory;
     }

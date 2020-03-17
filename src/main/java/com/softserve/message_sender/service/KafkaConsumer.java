@@ -1,7 +1,7 @@
 package com.softserve.message_sender.service;
 
-import com.softserve.message_sender.model.UserReceipt;
-import com.softserve.message_sender.repository.UserReceiptRepo;
+import com.softserve.message_sender.model.MessageHandler;
+import com.softserve.message_sender.repository.MessageHandlerRepo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
@@ -14,15 +14,15 @@ import org.springframework.stereotype.Service;
 public class KafkaConsumer {
 
     private final MailService mailService;
-    private final UserReceiptRepo userReceiptRepo;
+    private final MessageHandlerRepo messageHandlerRepo;
 
     @KafkaListener(topics = "${kafka.topic.email-receipt}", containerFactory = "kafkaListenerContainerFactory")
-    public void listenMailReceipt(UserReceipt userReceipt, ConsumerRecord<String, UserReceipt> record) {
+    public void listenMailReceipt(MessageHandler messageHandler, ConsumerRecord<String, MessageHandler> record) {
         log.info("Received userReceipt from partition {}", record.partition());
 
-        userReceiptRepo.save(userReceipt);
+        messageHandlerRepo.save(messageHandler);
 
-        mailService.sendReceiptMessage(userReceipt);
+        mailService.sendReceiptMessage(messageHandler);
     }
 
     //TODO pushMessage

@@ -1,10 +1,10 @@
 package com.softserve.message_sender.service;
 
-import com.softserve.message_sender.model.UserReceipt;
+import com.softserve.message_sender.model.MessageHandler;
 
 public interface MailService {
 
-    void sendReceiptMessage(UserReceipt userReceipt);
+    void sendReceiptMessage(MessageHandler messageHandler);
 
     //TODO email verification
 }

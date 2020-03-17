@@ -2,7 +2,7 @@ package com.softserve.message_sender.service;
 
 import com.softserve.message_sender.model.UserReceipt;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
@@ -12,7 +12,7 @@ import javax.mail.internet.MimeMessage;
 
 @Service
 @RequiredArgsConstructor
-@Log4j2
+@Slf4j
 public class MailServiceImpl implements MailService {
 
     private final JavaMailSender javaMailSender;

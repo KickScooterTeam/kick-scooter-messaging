@@ -3,14 +3,14 @@ package com.softserve.message_sender.service;
 import com.softserve.message_sender.model.UserReceipt;
 import com.softserve.message_sender.repository.UserReceiptRepo;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-@Log4j2
+@Slf4j
 public class KafkaConsumer {
 
     private final MailService mailService;

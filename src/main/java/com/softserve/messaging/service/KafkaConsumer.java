@@ -19,8 +19,8 @@ public class KafkaConsumer {
     private final MailTemplateDirector mailTemplateDirector;
 
     @KafkaListener(topics = "${kafka.topic.email-receipt}", containerFactory = "kafkaListenerContainerFactory")
-    public void listenMailReceipt(MessageHandler messageHandler, ConsumerRecord<String, MessageHandler> record) {
-        log.info("Received userReceipt from partition {}", record.partition());
+    public void listenMailReceipt(MessageHandler messageHandler) {
+        log.info("Received user receipt");
 
         MailTemplateDto mailTemplateDto = mailTemplateDirector.createReceiptTemplate(messageHandler);
 

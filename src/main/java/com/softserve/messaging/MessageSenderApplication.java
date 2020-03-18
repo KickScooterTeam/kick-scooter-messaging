@@ -1,4 +1,4 @@
-package com.softserve.message_sender;
+package com.softserve.messaging;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,5 +11,5 @@ public class MessageSenderApplication {
     public static void main(String[] args) {
         SpringApplication.run(MessageSenderApplication.class, args);
     }
-// hello
+
 }

@@ -1,6 +1,6 @@
-package com.softserve.message_sender.config;
+package com.softserve.messaging.config;
 
-import com.softserve.message_sender.model.MessageHandler;
+import com.softserve.messaging.model.MessageHandler;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.beans.factory.annotation.Value;

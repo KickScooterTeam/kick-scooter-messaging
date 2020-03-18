@@ -1,0 +1,27 @@
+spring:
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${SEND_FROM_MAIL}
+    password: ${SEND_FROM_PASSWORD}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+  jpa:
+    hibernate:
+      ddl-auto: update
+    generate-ddl: true
+  datasource:
+    url: ${DATABASE_URL}
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
+
+kafka:
+  bootstrap-servers: ${BOOTSTRAP_SERVERS}
+  group-id: messaging
+  topic:
+    email-receipt: email.receipt
+    email-verification: email.verification

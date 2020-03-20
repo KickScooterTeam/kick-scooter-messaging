@@ -10,7 +10,7 @@ public class MailMessageInfoToMailMessageInfoDto implements Converter<MailMessag
         MailMessageInfoDto mailMessageInfoDto = new MailMessageInfoDto();
 
         mailMessageInfoDto.setEmail(mailMessageInfo.getEmail());
-        mailMessageInfoDto.setEmailTarget(mailMessageInfo.getEmailTarget());
+        mailMessageInfoDto.setEmailType(mailMessageInfo.getEmailType());
         mailMessageInfoDto.setFieldsSummary(mailMessageInfo.getFieldsSummary());
 
         return mailMessageInfoDto;

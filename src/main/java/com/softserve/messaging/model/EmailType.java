@@ -1,5 +1,5 @@
 package com.softserve.messaging.model;
 
-public enum EmailTarget {
+public enum EmailType {
     RECEIPT, VERIFICATION;
 }

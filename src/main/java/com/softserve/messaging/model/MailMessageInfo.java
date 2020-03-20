@@ -22,6 +22,6 @@ public class MailMessageInfo {
 
     private String email;
     @Enumerated(EnumType.STRING)
-    private EmailTarget emailTarget;
+    private EmailType emailType;
     private String fieldsSummary;
 }

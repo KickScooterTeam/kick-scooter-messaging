@@ -1,7 +1,7 @@
 package com.softserve.messaging.service;
 
 import com.softserve.messaging.dto.MailMessageInfoDto;
-import com.softserve.messaging.model.EmailTarget;
+import com.softserve.messaging.model.EmailType;
 import com.softserve.messaging.repository.MailMessageInfoRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.convert.ConversionService;
@@ -21,9 +21,9 @@ public class MailMessageInfoService {
                 .map(mailMessageInfo -> conversionService.convert(mailMessageInfo, MailMessageInfoDto.class));
     }
 
-    public Page<MailMessageInfoDto> getAllByEmailAndEmailType(String email, EmailTarget emailTarget, Pageable pageable) {
+    public Page<MailMessageInfoDto> getAllByEmailAndEmailType(String email, EmailType emailType, Pageable pageable) {
 
-        return mailMessageInfoRepo.findAllByEmailAndEmailType(email, emailTarget, pageable)
+        return mailMessageInfoRepo.findAllByEmailAndEmailType(email, emailType, pageable)
                 .map(mailMessageInfo -> conversionService.convert(mailMessageInfo, MailMessageInfoDto.class));
     }
 }

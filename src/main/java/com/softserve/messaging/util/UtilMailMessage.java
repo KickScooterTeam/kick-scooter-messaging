@@ -1,7 +1,7 @@
 package com.softserve.messaging.util;
 
-import com.softserve.messaging.dto.UserReceipt;
-import com.softserve.messaging.dto.UserValidation;
+import com.softserve.messaging.model.UserReceipt;
+import com.softserve.messaging.model.UserValidation;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -13,7 +13,7 @@ public class UtilMailMessage {
     private String verificationTopic = "Email verification";
     private String verificationBody = "Hello. Thanks for signing up. You're almost there.%n" +
             "Please confirm your registration by clicking the link below.%n" +
-            "https://www.localhost:8080/%s";
+            "%s";
 
     public String getReceiptTopic() {
         return receiptTopic;

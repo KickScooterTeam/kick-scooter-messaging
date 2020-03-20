@@ -1,10 +1,9 @@
 package com.softserve.messaging.service;
 
-import com.softserve.messaging.dto.MailTemplate;
-import com.softserve.messaging.dto.UserReceipt;
-import com.softserve.messaging.dto.UserValidation;
+import com.softserve.messaging.model.MailTemplate;
+import com.softserve.messaging.model.UserReceipt;
+import com.softserve.messaging.model.UserValidation;
 import com.softserve.messaging.util.UtilMailMessage;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +14,7 @@ public class MailTemplateDirector {
 
     public MailTemplate createReceiptTemplate(UserReceipt userReceipt) {
         MailTemplate mailTemplate = new MailTemplate();
+
         mailTemplate.setMail(userReceipt.getEmail());
         mailTemplate.setTopic(utilMailMessage.getReceiptTopic());
         mailTemplate.setBody(utilMailMessage.getReceiptBody(userReceipt));
@@ -24,6 +24,7 @@ public class MailTemplateDirector {
 
     public MailTemplate createVerificationTemplate(UserValidation userValidation) {
         MailTemplate mailTemplate = new MailTemplate();
+
         mailTemplate.setMail(userValidation.getEmail());
         mailTemplate.setTopic(utilMailMessage.getVerificationTopic());
         mailTemplate.setBody(utilMailMessage.getVerificationBody(userValidation));

@@ -1,6 +1,6 @@
 package com.softserve.messaging.service;
 
-import com.softserve.messaging.dto.MailTemplate;
+import com.softserve.messaging.model.MailTemplate;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.mail.javamail.JavaMailSender;

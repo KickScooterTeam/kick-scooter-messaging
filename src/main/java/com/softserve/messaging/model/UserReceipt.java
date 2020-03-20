@@ -1,4 +1,4 @@
-package com.softserve.messaging.dto;
+package com.softserve.messaging.model;
 
 import lombok.Data;
 import lombok.ToString;

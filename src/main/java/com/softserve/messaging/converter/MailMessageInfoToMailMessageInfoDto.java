@@ -13,6 +13,6 @@ public class MailMessageInfoToMailMessageInfoDto implements Converter<MailMessag
         mailMessageInfoDto.setEmailTarget(mailMessageInfo.getEmailTarget());
         mailMessageInfoDto.setFieldsSummary(mailMessageInfo.getFieldsSummary());
 
-        return null;
+        return mailMessageInfoDto;
     }
 }

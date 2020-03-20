@@ -1,7 +1,8 @@
 package com.softserve.messaging.service;
 
-import com.softserve.messaging.dto.MailTemplateDto;
-import com.softserve.messaging.model.MessageHandler;
+import com.softserve.messaging.dto.MailTemplate;
+import com.softserve.messaging.dto.UserReceipt;
+import com.softserve.messaging.dto.UserValidation;
 import com.softserve.messaging.util.UtilMailMessage;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -11,21 +12,21 @@ import org.springframework.stereotype.Service;
 public class MailTemplateDirector {
     private final UtilMailMessage utilMailMessage;
 
-    public MailTemplateDto createReceiptTemplate(MessageHandler messageHandler) {
-        MailTemplateDto mailTemplateDto = new MailTemplateDto();
-        mailTemplateDto.setMail(messageHandler.getMail());
-        mailTemplateDto.setTopic(utilMailMessage.getReceiptTopic());
-        mailTemplateDto.setBody(utilMailMessage.getReceiptBody(messageHandler));
+    public MailTemplate createReceiptTemplate(UserReceipt userReceipt) {
+        MailTemplate mailTemplate = new MailTemplate();
+        mailTemplate.setMail(userReceipt.getEmail());
+        mailTemplate.setTopic(utilMailMessage.getReceiptTopic());
+        mailTemplate.setBody(utilMailMessage.getReceiptBody(userReceipt));
 
-        return mailTemplateDto;
+        return mailTemplate;
     }
 
-    public MailTemplateDto createVerificationTemplate(MessageHandler messageHandler) {
-        MailTemplateDto mailTemplateDto = new MailTemplateDto();
-        mailTemplateDto.setMail(messageHandler.getMail());
-        mailTemplateDto.setTopic(utilMailMessage.getVerificationTopic());
-        mailTemplateDto.setBody(utilMailMessage.getVerificationBody(messageHandler));
+    public MailTemplate createVerificationTemplate(UserValidation userValidation) {
+        MailTemplate mailTemplate = new MailTemplate();
+        mailTemplate.setMail(userValidation.getEmail());
+        mailTemplate.setTopic(utilMailMessage.getVerificationTopic());
+        mailTemplate.setBody(utilMailMessage.getVerificationBody(userValidation));
 
-        return mailTemplateDto;
+        return mailTemplate;
     }
 }

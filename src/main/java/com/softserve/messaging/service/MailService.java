@@ -1,8 +1,8 @@
 package com.softserve.messaging.service;
 
-import com.softserve.messaging.dto.MailTemplateDto;
+import com.softserve.messaging.dto.MailTemplate;
 
 public interface MailService {
 
-    void sendMessage(MailTemplateDto mailTemplateDto);
+    void sendMessage(MailTemplate mailTemplate);
 }

@@ -1,7 +1,6 @@
 package com.softserve.messaging.service;
 
-import com.softserve.messaging.dto.MailTemplateDto;
-import com.softserve.messaging.model.MessageHandler;
+import com.softserve.messaging.dto.MailTemplate;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -18,15 +17,15 @@ public class MailServiceImpl implements MailService {
 
     private final JavaMailSender javaMailSender;
 
-    public void sendMessage(MailTemplateDto mailTemplateDto) {
+    public void sendMessage(MailTemplate mailTemplate) {
         MimeMessage message = javaMailSender.createMimeMessage();
 
         try {
             MimeMessageHelper helper = new MimeMessageHelper(message, true);
 
-            helper.setTo(mailTemplateDto.getMail());
-            helper.setSubject(mailTemplateDto.getTopic());
-            helper.setText(mailTemplateDto.getBody());
+            helper.setTo(mailTemplate.getMail());
+            helper.setSubject(mailTemplate.getTopic());
+            helper.setText(mailTemplate.getBody());
 
             javaMailSender.send(message);
 

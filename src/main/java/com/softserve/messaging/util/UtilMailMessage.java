@@ -1,13 +1,14 @@
 package com.softserve.messaging.util;
 
-import com.softserve.messaging.model.MessageHandler;
+import com.softserve.messaging.dto.UserReceipt;
+import com.softserve.messaging.dto.UserValidation;
 import org.springframework.stereotype.Component;
 
 @Component
 public class UtilMailMessage {
 
     private String receiptTopic = "Electronic receipt";
-    private String receiptBody = "Hello, %s. Thanks for a ride. We hope you've enjoyed it.%nTotal cost: %.2f $";
+    private String receiptBody = "Hello, %s. Thanks for a ride. We hope you've enjoyed it.%nTotal cost: %.2f %s";
 
     private String verificationTopic = "Email verification";
     private String verificationBody = "Hello. Thanks for signing up. You're almost there.%n" +
@@ -22,12 +23,13 @@ public class UtilMailMessage {
         return verificationTopic;
     }
 
-    public String getReceiptBody(MessageHandler messageHandler) {
-        return String.format(receiptBody, messageHandler.getFirstName(), messageHandler.getCost());
+    public String getReceiptBody(UserReceipt userReceipt) {
+        return String.format(receiptBody,
+                userReceipt.getFirstName(), userReceipt.getTripCost(), userReceipt.getCurrency());
     }
 
-    public String getVerificationBody(MessageHandler messageHandler) {
-        return String.format(verificationBody, messageHandler.getToken());
+    public String getVerificationBody(UserValidation userValidation) {
+        return String.format(verificationBody, userValidation.getVerificationPath());
     }
 
 

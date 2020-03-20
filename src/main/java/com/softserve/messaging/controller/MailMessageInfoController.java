@@ -26,11 +26,12 @@ public class MailMessageInfoController {
         return ResponseEntity.ok(mailMessageInfoService.getAllByEmail(email, pageable));
     }
 
-    @GetMapping
-    public ResponseEntity<Page<MailMessageInfoDto>> getAllByEmailAndType(@RequestParam String email,
-                                                                         @RequestParam EmailType emailType,
-                                                                         @PageableDefault Pageable pageable) {
+    //EXC: ambiguous mapping
+    /* @GetMapping
+    public ResponseEntity<Page<MailMessageInfoDto>> getAllByEmail(@RequestParam String email,
+                                                                  @RequestParam EmailType emailType,
+                                                                  @PageableDefault Pageable pageable) {
         return ResponseEntity.ok(mailMessageInfoService.getAllByEmailAndEmailType(email, emailType, pageable));
-    }
+    }*/
 
 }

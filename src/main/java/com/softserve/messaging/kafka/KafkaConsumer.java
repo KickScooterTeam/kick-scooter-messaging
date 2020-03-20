@@ -35,7 +35,7 @@ public class KafkaConsumer {
     }
 
     @SuppressWarnings("ConstantConditions")
-    @KafkaListener(topics = "email.verification")
+    @KafkaListener(topics = "email.verification", containerFactory = "kafkaListenerContainerFactory")
     public void listenMailVerification(UserValidation userValidation) {
         log.info("Received user verification");
 

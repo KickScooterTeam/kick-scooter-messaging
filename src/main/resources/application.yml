@@ -22,6 +22,3 @@ spring:
 kafka:
   bootstrap-servers: ${BOOTSTRAP_SERVERS}
   group-id: messaging
-  topic:
-    email-receipt: email.receipt
-    email-verification: email.verification

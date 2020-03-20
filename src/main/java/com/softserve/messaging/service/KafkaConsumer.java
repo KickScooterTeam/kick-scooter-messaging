@@ -18,7 +18,7 @@ public class KafkaConsumer {
     private final MessageHandlerRepo messageHandlerRepo;
     private final MailTemplateDirector mailTemplateDirector;
 
-    @KafkaListener(topics = "${kafka.topic.email-receipt}", containerFactory = "kafkaListenerContainerFactory")
+    @KafkaListener(topics = "email.receipt")
     public void listenMailReceipt(MessageHandler messageHandler) {
         log.info("Received user receipt");
 
@@ -28,7 +28,7 @@ public class KafkaConsumer {
         messageHandlerRepo.save(messageHandler);
     }
 
-    @KafkaListener(topics = "${kafka.topic.email-verification}", containerFactory = "kafkaListenerContainerFactory")
+    @KafkaListener(topics = "email.verification")
     public void listenMailVerification(MessageHandler messageHandler) {
         log.info("Received user verification");
 

@@ -1,8 +1,8 @@
 package com.softserve.messaging.converter;
 
-import com.softserve.messaging.model.UserValidation;
 import com.softserve.messaging.model.EmailType;
 import com.softserve.messaging.model.MailMessageInfo;
+import com.softserve.messaging.model.UserValidation;
 import org.springframework.core.convert.converter.Converter;
 
 public class UserValidationToMailMessageInfo implements Converter<UserValidation, MailMessageInfo> {

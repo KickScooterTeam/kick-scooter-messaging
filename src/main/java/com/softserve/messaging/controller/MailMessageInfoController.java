@@ -1,6 +1,7 @@
 package com.softserve.messaging.controller;
 
 import com.softserve.messaging.dto.MailMessageInfoDto;
+import com.softserve.messaging.model.EmailType;
 import com.softserve.messaging.service.MailMessageInfoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -25,11 +26,11 @@ public class MailMessageInfoController {
         return ResponseEntity.ok(mailMessageInfoService.getAllByEmail(email, pageable));
     }
 
-//    @GetMapping
-//    public ResponseEntity<Page<MailMessageInfoDto>> getAllByEmailAndType(@RequestParam String email,
-//                                                                      @RequestParam EmailTarget emailTarget,
-//                                                                      @PageableDefault Pageable pageable) {
-//        return ResponseEntity.ok(mailMessageInfoService.getAllByEmailAndEmailType(email, emailTarget, pageable));
-//    }
+    @GetMapping
+    public ResponseEntity<Page<MailMessageInfoDto>> getAllByEmailAndType(@RequestParam String email,
+                                                                         @RequestParam EmailType emailType,
+                                                                         @PageableDefault Pageable pageable) {
+        return ResponseEntity.ok(mailMessageInfoService.getAllByEmailAndEmailType(email, emailType, pageable));
+    }
 
 }

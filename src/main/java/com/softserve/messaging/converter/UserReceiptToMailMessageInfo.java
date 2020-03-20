@@ -1,8 +1,8 @@
 package com.softserve.messaging.converter;
 
-import com.softserve.messaging.model.UserReceipt;
 import com.softserve.messaging.model.EmailType;
 import com.softserve.messaging.model.MailMessageInfo;
+import com.softserve.messaging.model.UserReceipt;
 import org.springframework.core.convert.converter.Converter;
 
 public class UserReceiptToMailMessageInfo implements Converter<UserReceipt, MailMessageInfo> {

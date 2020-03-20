@@ -1,32 +1,27 @@
 package com.softserve.messaging.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.time.ZonedDateTime;
-import java.util.UUID;
 
 @Entity
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
-public class MessageHandler {
+public class MailMessageInfo {
+    //todo change name to a more appropriate one for this entity
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private UUID userUUID;
-    private String firstName;
-    private String lastName;
-    private String mail;
-    private double cost;
-    private String token;
-    private ZonedDateTime zonedDateTime;
-
+    private String email;
+    @Enumerated(EnumType.STRING)
+    private EmailType emailType;
+    private String fieldsSummary;
 }

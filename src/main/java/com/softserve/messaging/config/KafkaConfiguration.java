@@ -1,6 +1,6 @@
 package com.softserve.messaging.config;
 
-import com.softserve.messaging.model.MessageHandler;
+import com.softserve.messaging.model.MailMessageInfo;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.beans.factory.annotation.Value;
@@ -38,14 +38,14 @@ public class KafkaConfiguration {
     }
 
     @Bean
-    public ConsumerFactory<String, MessageHandler> consumerFactory() {
+    public ConsumerFactory<String, MailMessageInfo> consumerFactory() {
         return new DefaultKafkaConsumerFactory<>(consumerConfig(), new StringDeserializer(),
-                new JsonDeserializer<>(MessageHandler.class, false));
+                new JsonDeserializer<>(MailMessageInfo.class, false));
     }
 
     @Bean
-    public ConcurrentKafkaListenerContainerFactory<String, MessageHandler> kafkaListenerContainerFactory() {
-        ConcurrentKafkaListenerContainerFactory<String, MessageHandler> factory = new ConcurrentKafkaListenerContainerFactory<>();
+    public ConcurrentKafkaListenerContainerFactory<String, MailMessageInfo> kafkaListenerContainerFactory() {
+        ConcurrentKafkaListenerContainerFactory<String, MailMessageInfo> factory = new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(consumerFactory());
         return factory;
     }

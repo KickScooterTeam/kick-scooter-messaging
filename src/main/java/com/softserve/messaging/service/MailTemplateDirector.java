@@ -5,10 +5,11 @@ import com.softserve.messaging.dto.UserReceipt;
 import com.softserve.messaging.dto.UserValidation;
 import com.softserve.messaging.util.UtilMailMessage;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class MailTemplateDirector {
     private final UtilMailMessage utilMailMessage;
 

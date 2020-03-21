@@ -19,6 +19,19 @@ spring:
     username: ${DATABASE_USERNAME}
     password: ${DATABASE_PASSWORD}
 
-kafka:
-  bootstrap-servers: ${BOOTSTRAP_SERVERS}
-  group-id: messaging
+  kafka:
+    bootstrap-servers: localhost:9092,localhost:9093
+    consumer:
+      group-id: messaging
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.type.mapping: >
+          receipt:com.softserve.messaging.model.UserReceipt,
+          validation:com.softserve.messaging.model.UserValidation
+    listener:
+      missing-topics-fatal: false
+
+
+server:
+  port: 8089

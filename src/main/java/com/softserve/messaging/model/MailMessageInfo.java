@@ -14,7 +14,6 @@ import javax.persistence.Id;
 @Data
 @NoArgsConstructor
 public class MailMessageInfo {
-    //todo change name to a more appropriate one for this entity
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -8,7 +8,7 @@ import java.time.Instant;
 import java.util.UUID;
 
 @Data
-@ToString(includeFieldNames = true, exclude = "email")
+@ToString(exclude = "email")
 public class UserReceipt {
     private UUID userId;
     private BigDecimal tripCost;

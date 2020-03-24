@@ -1,7 +1,6 @@
 package com.softserve.messaging.controller;
 
 import com.softserve.messaging.dto.MailMessageInfoDto;
-import com.softserve.messaging.dto.MailMessageSortingDto;
 import com.softserve.messaging.service.MailMessageInfoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -19,9 +18,9 @@ public class MailMessageInfoController {
     private final MailMessageInfoService mailMessageInfoService;
 
     @GetMapping
-    public ResponseEntity<Page<MailMessageInfoDto>> getMessages(MailMessageSortingDto mailMessageSortingDto,
+    public ResponseEntity<Page<MailMessageInfoDto>> getMessages(MailMessageInfoDto mailMessageInfoDto,
                                                                 Pageable pageable) {
-        return ResponseEntity.ok(mailMessageInfoService.getMessages(mailMessageSortingDto, pageable));
+        return ResponseEntity.ok(mailMessageInfoService.getMessages(mailMessageInfoDto, pageable));
     }
 
 }

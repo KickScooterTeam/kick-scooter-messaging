@@ -31,7 +31,7 @@ public class MailServiceImpl implements MailService {
 
             log.info("Mail was successfully sent");
         } catch (MessagingException e) {
-            log.error("Mail wasn't sent, exception: {}", e.getMessage());
+            log.error("Mail wasn't sent, exception: {}", e.toString());
         }
     }
 }

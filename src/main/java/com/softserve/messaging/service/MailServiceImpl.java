@@ -1,8 +1,8 @@
-package com.softserve.message_sender.service;
+package com.softserve.messaging.service;
 
-import com.softserve.message_sender.domain.UserReceipt;
+import com.softserve.messaging.model.MailTemplate;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
@@ -12,25 +12,26 @@ import javax.mail.internet.MimeMessage;
 
 @Service
 @RequiredArgsConstructor
-@Log4j2
+@Slf4j
 public class MailServiceImpl implements MailService {
 
     private final JavaMailSender javaMailSender;
 
-    public void sendReceiptMessage(UserReceipt userReceipt) {
+    public void sendMessage(MailTemplate mailTemplate) {
         MimeMessage message = javaMailSender.createMimeMessage();
 
         try {
             MimeMessageHelper helper = new MimeMessageHelper(message, true);
 
-            helper.setTo(userReceipt.getMail());
-            helper.setSubject(UserReceipt.TITLE);
-            helper.setText(userReceipt.toString());
+            helper.setTo(mailTemplate.getMail());
+            helper.setSubject(mailTemplate.getTopic());
+            helper.setText(mailTemplate.getBody());
 
             javaMailSender.send(message);
+
             log.info("Mail was successfully sent");
         } catch (MessagingException e) {
-            log.error("Mail wasn't sent, exception: {}", e.getMessage());
+            log.error("Mail wasn't sent, exception: {}", e.toString());
         }
     }
 }

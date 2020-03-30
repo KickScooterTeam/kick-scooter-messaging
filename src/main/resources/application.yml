@@ -16,7 +16,6 @@ spring:
     url: ${DATABASE_URL}
     username: ${DATABASE_USERNAME}
     password: ${DATABASE_PASSWORD}
-
   kafka:
     bootstrap-servers: ${BOOTSTRAP_SERVERS}
     consumer:
@@ -26,7 +25,3 @@ spring:
         spring.json.type.mapping: >
           receipt:com.softserve.messaging.model.UserReceipt,
           validation:com.softserve.messaging.model.UserValidation
-
-
-server:
-  port: ${SERVER_PORT}

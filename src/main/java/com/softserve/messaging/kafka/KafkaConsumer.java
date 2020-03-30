@@ -20,7 +20,7 @@ public class KafkaConsumer {
     private final MailTemplateDirector mailTemplateDirector;
     private final MailMessageInfoService mailMessageInfoService;
 
-    @KafkaListener(topics = "email.receipt")
+    @KafkaListener(topics = "email-receipt")
     public void listenMailReceipt(UserReceipt userReceipt) {
         log.info("Received user receipt");
 
@@ -30,7 +30,7 @@ public class KafkaConsumer {
         mailMessageInfoService.saveUserReceipt(userReceipt);
     }
 
-    @KafkaListener(topics = "email.verification")
+    @KafkaListener(topics = "email-verification")
     public void listenMailVerification(UserValidation userValidation) {
         log.info("Received user verification");
 

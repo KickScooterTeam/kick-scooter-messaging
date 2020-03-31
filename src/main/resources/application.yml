@@ -30,8 +30,6 @@ spring:
           receipt:com.softserve.messaging.model.UserReceipt,
           validation:com.softserve.messaging.model.UserValidation
 
-service:
-  token: ${SERVICE_TOKEN}
+service-token: ${SERVICE_TOKEN}
 
-identity:
-  url: ${IDENTITY_URL}
+identity-url: ${IDENTITY_URL}

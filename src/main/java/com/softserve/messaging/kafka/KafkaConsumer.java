@@ -23,7 +23,7 @@ public class KafkaConsumer {
     private final MailMessageInfoService mailMessageInfoService;
     private final MessagingClient messagingClient;
 
-    @Value("${service.token}")
+    @Value("${service-token}")
     private String bearerToken;
 
     @KafkaListener(topics = "email-receipt")

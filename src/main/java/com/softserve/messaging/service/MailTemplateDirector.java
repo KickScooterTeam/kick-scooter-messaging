@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class MailTemplateDirector {
+
     private final UtilMailMessage utilMailMessage;
 
     public MailTemplate createReceiptTemplate(UserReceipt userReceipt) {

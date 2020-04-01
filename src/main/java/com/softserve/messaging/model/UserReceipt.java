@@ -10,6 +10,7 @@ import java.util.UUID;
 @Data
 @ToString(exclude = "email")
 public class UserReceipt {
+
     private UUID userId;
     private BigDecimal tripCost;
     private String currency;

@@ -11,14 +11,13 @@ spring:
           auth: true
           starttls:
             enable: true
-
-  jpa:
-    generate-ddl: true
-
   datasource:
     url: ${DATABASE_URL}
     username: ${DATABASE_USERNAME}
     password: ${DATABASE_PASSWORD}
+
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.xml
 
   kafka:
     bootstrap-servers: ${BOOTSTRAP_SERVERS}

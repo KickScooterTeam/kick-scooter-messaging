@@ -7,7 +7,7 @@
     <changeSet id="1" author="authorName">
         <createTable tableName="mail_message_info">
             <column name="id" type="bigint" autoIncrement="true">
-                <constraints primaryKey="true"  nullable="false"/>
+                <constraints primaryKey="true"/>
             </column>
             <column name="email" type="varchar(255)">
                 <constraints nullable="false"/>

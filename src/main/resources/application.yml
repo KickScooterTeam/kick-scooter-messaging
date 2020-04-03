@@ -1,4 +1,8 @@
 spring:
+
+  application:
+    name: messaging-service
+
   mail:
     host: smtp.gmail.com
     port: 587
@@ -10,12 +14,13 @@ spring:
           auth: true
           starttls:
             enable: true
-  jpa:
-    generate-ddl: true
   datasource:
     url: ${DATABASE_URL}
     username: ${DATABASE_USERNAME}
     password: ${DATABASE_PASSWORD}
+
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.xml
 
   kafka:
     bootstrap-servers: ${BOOTSTRAP_SERVERS}
@@ -27,6 +32,5 @@ spring:
           receipt:com.softserve.messaging.model.UserReceipt,
           validation:com.softserve.messaging.model.UserValidation
 
+service-token: ${SERVICE_TOKEN}
 
-server:
-  port: ${SERVER_PORT}

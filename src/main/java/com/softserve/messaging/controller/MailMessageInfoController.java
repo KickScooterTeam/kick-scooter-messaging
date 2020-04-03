@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/messages")
+@RequestMapping("/messages")
 public class MailMessageInfoController {
 
     private final MailMessageInfoService mailMessageInfoService;

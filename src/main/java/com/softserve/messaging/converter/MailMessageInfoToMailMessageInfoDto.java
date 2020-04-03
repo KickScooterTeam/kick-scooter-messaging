@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class MailMessageInfoToMailMessageInfoDto implements Converter<MailMessageInfo, MailMessageInfoDto> {
+
     @Override
     public MailMessageInfoDto convert(MailMessageInfo mailMessageInfo) {
         MailMessageInfoDto mailMessageInfoDto = new MailMessageInfoDto();

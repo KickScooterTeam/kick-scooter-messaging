@@ -1,5 +1,6 @@
 package com.softserve.messaging.kafka;
 
+import com.softserve.messaging.controller.IdentityClient;
 import com.softserve.messaging.model.MailTemplate;
 import com.softserve.messaging.model.UserReceipt;
 import com.softserve.messaging.model.UserValidation;
@@ -8,6 +9,7 @@ import com.softserve.messaging.service.MailService;
 import com.softserve.messaging.service.MailTemplateDirector;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
@@ -19,10 +21,19 @@ public class KafkaConsumer {
     private final MailService mailService;
     private final MailTemplateDirector mailTemplateDirector;
     private final MailMessageInfoService mailMessageInfoService;
+    private final IdentityClient identityClient;
 
-    @KafkaListener(topics = "email.receipt")
+    @Value("${service-token}")
+    private String bearerToken;
+
+    @KafkaListener(topics = "email-receipt")
     public void listenMailReceipt(UserReceipt userReceipt) {
         log.info("Received user receipt");
+
+        UserReceipt missingUserInfo =
+                identityClient.getMissingUserInfo("Bearer " + bearerToken, userReceipt.getUserId());
+        userReceipt.setEmail(missingUserInfo.getEmail());
+        userReceipt.setFirstName(missingUserInfo.getFirstName());
 
         MailTemplate mailTemplate = mailTemplateDirector.createReceiptTemplate(userReceipt);
         mailService.sendMessage(mailTemplate);
@@ -30,7 +41,7 @@ public class KafkaConsumer {
         mailMessageInfoService.saveUserReceipt(userReceipt);
     }
 
-    @KafkaListener(topics = "email.verification")
+    @KafkaListener(topics = "email-verification")
     public void listenMailVerification(UserValidation userValidation) {
         log.info("Received user verification");
 

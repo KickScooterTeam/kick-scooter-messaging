@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class UserReceiptToMailMessageInfo implements Converter<UserReceipt, MailMessageInfo> {
+
     @Override
     public MailMessageInfo convert(UserReceipt userReceipt) {
         MailMessageInfo mailMessageInfo = new MailMessageInfo();

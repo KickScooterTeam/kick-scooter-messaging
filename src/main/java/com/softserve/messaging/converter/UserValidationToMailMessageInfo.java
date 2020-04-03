@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class UserValidationToMailMessageInfo implements Converter<UserValidation, MailMessageInfo> {
+
     @Override
     public MailMessageInfo convert(UserValidation userValidation) {
         MailMessageInfo mailMessageInfo = new MailMessageInfo();

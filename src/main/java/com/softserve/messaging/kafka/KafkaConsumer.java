@@ -1,6 +1,6 @@
 package com.softserve.messaging.kafka;
 
-import com.softserve.messaging.controller.MessagingClient;
+import com.softserve.messaging.controller.IdentityClient;
 import com.softserve.messaging.model.MailTemplate;
 import com.softserve.messaging.model.UserReceipt;
 import com.softserve.messaging.model.UserValidation;
@@ -21,7 +21,7 @@ public class KafkaConsumer {
     private final MailService mailService;
     private final MailTemplateDirector mailTemplateDirector;
     private final MailMessageInfoService mailMessageInfoService;
-    private final MessagingClient messagingClient;
+    private final IdentityClient identityClient;
 
     @Value("${service-token}")
     private String bearerToken;
@@ -31,7 +31,7 @@ public class KafkaConsumer {
         log.info("Received user receipt");
 
         UserReceipt missingUserInfo =
-                messagingClient.getMissingUserInfo("Bearer " + bearerToken, userReceipt.getUserId());
+                identityClient.getMissingUserInfo("Bearer " + bearerToken, userReceipt.getUserId());
         userReceipt.setEmail(missingUserInfo.getEmail());
         userReceipt.setFirstName(missingUserInfo.getFirstName());
 

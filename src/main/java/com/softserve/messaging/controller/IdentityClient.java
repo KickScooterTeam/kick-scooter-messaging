@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestHeader;
 
 import java.util.UUID;
 
-@FeignClient(name = "messaging-client", url = "${identity-url}")
-public interface MessagingClient {
+@FeignClient(name = "identity-service", url = "${identity-url}")
+public interface IdentityClient {
 
     @GetMapping(path = "/users/{id}")
     UserReceipt getMissingUserInfo(@RequestHeader("Authorization") String bearerToken, @PathVariable UUID id);

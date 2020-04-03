@@ -1,5 +1,8 @@
 spring:
 
+  application:
+    name: messaging-service
+
   mail:
     host: smtp.gmail.com
     port: 587
@@ -31,4 +34,3 @@ spring:
 
 service-token: ${SERVICE_TOKEN}
 
-identity-url: ${IDENTITY_URL}

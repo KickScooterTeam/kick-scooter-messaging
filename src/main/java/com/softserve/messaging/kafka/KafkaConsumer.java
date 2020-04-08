@@ -31,7 +31,7 @@ public class KafkaConsumer {
         log.info("Received user receipt");
 
         UserReceipt missingUserInfo =
-                identityClient.getMissingUserInfo("Bearer " + bearerToken, userReceipt.getUserId());
+                identityClient.getMissingUserInfo(bearerToken, userReceipt.getUserId());
         userReceipt.setEmail(missingUserInfo.getEmail());
         userReceipt.setFirstName(missingUserInfo.getFirstName());
 

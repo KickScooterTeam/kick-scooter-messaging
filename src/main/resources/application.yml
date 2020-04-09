@@ -32,5 +32,10 @@ spring:
           receipt:com.softserve.messaging.model.UserReceipt,
           validation:com.softserve.messaging.model.UserValidation
 
+eureka:
+  client:
+    service-url:
+      defaultZone: http://${EUREKA_SERVER}/eureka/
+
 service-token: ${SERVICE_TOKEN}
 

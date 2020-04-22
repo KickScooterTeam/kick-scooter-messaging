@@ -39,3 +39,6 @@ eureka:
 
 service-token: ${SERVICE_TOKEN}
 
+logging:
+  file:
+    path: /var/log/messaging

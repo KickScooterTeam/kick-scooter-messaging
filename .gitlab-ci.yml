@@ -6,6 +6,7 @@ stages:
 build:
   stage: build
   script:
+    - cp /home/sumo_credentials.txt ./sumo_credentials.txt  
     - mvn clean package
     - sudo docker build -t gitlab.sslsecure.website:5050/root/kick-scooter-trip:messaging .
     - sudo docker push gitlab.sslsecure.website:5050/root/kick-scooter-trip:messaging

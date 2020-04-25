@@ -10,10 +10,14 @@ build:
     - mvn clean package
     - sudo docker build -t gitlab.sslsecure.website:5050/root/kick-scooter-trip:messaging .
     - sudo docker push gitlab.sslsecure.website:5050/root/kick-scooter-trip:messaging
-    
+  only:
+    - demo4-branch
+
 deploy:
   stage: deploy
   script:
     - ssh $USERNAME@$IP "cd /var/ && sudo bash /var/deploy.sh"
   after_script:
     - docker image prune -a -f &>/dev/null
+  only:
+    - demo4-branch
